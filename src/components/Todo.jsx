@@ -2,7 +2,7 @@
 
 
 
-function Todo({ todo }) {
+function Todo({ todo, onEdit, onDelete, onToggle }) {
     console.log(todo);
     const { title, completed, id } = todo;
   
@@ -10,10 +10,12 @@ function Todo({ todo }) {
       <div style={styles}>
         <input 
         type="checkbox" 
-        checked={completed} />
+        checked={completed} 
+        onChange={() => onToggle(id)}
+        />
         <h2>{title}</h2>
-        <button>Edit</button>
-        <button>Delete</button>
+        <button onClick={() => onEdit(id)}>Edit</button>
+        <button onClick={() => onDelete(id)}>Delete</button>
       </div>
     );
   }
